@@ -67,6 +67,22 @@ Output:
 [info] * (500, .../src/main/scala/../../../D.scala)
 ```
 
+## Testing
+
+To test the plugin you can use sbt scripted tests framework,
+which lets you script a build scenario.
+
+The current projects includes [scripted-plugin](src/sbt-test/src-bulky-sources-plugin/smoke/test) that performs smoke tests.
+
+To run the scripts, go back to your plugin project, and run:
+
+```
+> scripted
+```
+
+This will copy your test build into a temporary dir, and executes the test script.
+If everything works out, you’d see publishLocal running, then the result of testing.
+
 ## License
 
 Please see [the license file](LICENSE.md).
