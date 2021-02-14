@@ -8,37 +8,46 @@ import sbt.complete.DefaultParsers.{NatBasic, Space, token}
 object BulkySources extends AutoPlugin {
   
   object autoImport {
-    lazy val bulkyThresholdInLines = SettingKey[Int]("threshold to check if the particular source is bulky. The default value is 100.")
-    lazy val bulkySources = inputKey[Seq[(Int, File)]]("List large or bulky sources for which the number of lines it contains equals to or more than a given threshold.")
+    lazy val bulkyThresholdInLines = settingKey[Int]("threshold to check if the particular source is bulky. The default value is 100.")
+    lazy val bulkySources = inputKey[Seq[(Int, File)]]("list large or bulky sources for which the number of lines it contains equals to or more than a given threshold.")
   }
   
   import autoImport._
 
-  override def projectSettings: Seq[Setting[_]] = Seq(
-    (Test / bulkySources) := listBulkySourcesTask(Test).evaluated,
-    (Compile / bulkySources) := listBulkySourcesTask(Compile).evaluated,
-    bulkyThresholdInLines := 100
+  override lazy val globalSettings: Seq[Setting[_]] = Seq(
+    bulkyThresholdInLines := BulkySources.Defaults.thresholdInLines
   )
 
-  override def requires: Plugins = Plugins.empty
-  override def trigger: PluginTrigger = allRequirements
-  
-  private val thresholdTokenParser: Def.Initialize[Parser[Int]] =
-    Def.setting {
-      Space ~> token(NatBasic, "<threshold>") ?? bulkyThresholdInLines.value
-    }
+  override def projectSettings: Seq[Setting[_]] = Seq(
+    (Test / bulkySources) := BulkySources.listBulkySourcesTask(Test).evaluated,
+    (Compile / bulkySources) := BulkySources.listBulkySourcesTask(Compile).evaluated,
+  )
 
-  private def listBulkySourcesTask(configuration: Configuration): Def.Initialize[InputTask[Seq[(Int, File)]]] =
+  override def trigger: PluginTrigger = allRequirements
+  override def requires: Plugins = Plugins.empty
+}
+
+object BulkySources {
+  object Defaults {
+    val thresholdInLines: Int = 100
+  }
+
+  val thresholdTokenParser: Def.Initialize[Parser[Int]] =
+    Def.setting {
+      Space ~> token(NatBasic, "<threshold value>") ?? Defaults.thresholdInLines
+    }
+   
+  def listBulkySourcesTask(configuration: Configuration): Def.Initialize[InputTask[Seq[(Int, File)]]] =
     Def.inputTaskDyn {
-      val threshold = thresholdTokenParser.parsed
+      val threshold = BulkySources.thresholdTokenParser.parsed
       val files = (configuration / sources).value
 
       Def.task {
         files
-          .map(file => (IO.readLines(file).size + 1, file))
+          .map(file => (IO.readLines(file).length, file))
           .filter { case (linesInFile, _) => linesInFile >= threshold }
           .sorted
           .reverse
       }
     }
-}
+} 
