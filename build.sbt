@@ -1,9 +1,11 @@
+ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / name := "sbt-bulky-sources"
+ThisBuild / organization := "dersimdavaod.scalabootcamp"
+ThisBuild / homepage := Some(url("https://github.com/dersim-davaod/sbt-bulky-sources"))
+
 lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
-    name := "sbt-bulky-sources",
-    organization := "dersimdavaod.scalabootcamp",
-    version := "0.1.0-SNAPSHOT",
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },

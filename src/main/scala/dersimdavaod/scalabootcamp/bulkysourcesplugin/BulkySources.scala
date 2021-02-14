@@ -20,8 +20,8 @@ object BulkySources extends AutoPlugin {
     bulkyThresholdInLines := 100
   )
 
-  override def trigger: PluginTrigger = allRequirements
   override def requires: Plugins = Plugins.empty
+  override def trigger: PluginTrigger = allRequirements
   
   private val thresholdTokenParser: Def.Initialize[Parser[Int]] =
     Def.setting {
