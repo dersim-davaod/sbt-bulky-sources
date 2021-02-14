@@ -1,0 +1,11 @@
+# checks if bulkySources task succeeeds as expected
+> show bulkySources
+> show bulkySources 0
+> show bulkySources 1
+> show bulkySources 1000
+
+# checks if bulkySources task fails as expected
+-> show bulkySources -1
+-> show bulkySources -100
+-> show bulkySources abc
+-> show bulkySources 1 2 3
