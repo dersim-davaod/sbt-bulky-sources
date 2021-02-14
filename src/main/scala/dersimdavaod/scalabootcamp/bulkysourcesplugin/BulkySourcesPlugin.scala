@@ -15,7 +15,7 @@ object BulkySourcesPlugin extends AutoPlugin {
   import autoImport._
 
   override lazy val globalSettings: Seq[Setting[_]] = Seq(
-    bulkyThresholdInLines := BulkySources.Defaults.thresholdInLines
+    bulkyThresholdInLines := BulkySources.Defaults.thresholdInLines,
   )
 
   override def projectSettings: Seq[Setting[_]] = Seq(
