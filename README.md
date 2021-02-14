@@ -14,7 +14,7 @@ Those files that are large or "bulky" are displayed, so the developer can treat 
 
 ## Installation (currently PUBLIC BETA or SNAPSHOT version)
 
-1. First, [install sbt 1.4.6 or higher](https://www.scala-sbt.org/release/docs/Setup.html).
+1. First, [install sbt 1.4.7 or higher](https://www.scala-sbt.org/release/docs/Setup.html).
 1. Clone the current plugin to the local machine.
 1. Navigate into the plugin's root dir and do a local publishing:
 

@@ -8,7 +8,7 @@ lazy val root = (project in file("."))
     name := "sbt-bulky-sources",
     pluginCrossBuild / sbtVersion := {
       scalaBinaryVersion.value match {
-        case "2.13" => "1.4.6"
+        case "2.13" => "1.4.7"
       }
     },
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
