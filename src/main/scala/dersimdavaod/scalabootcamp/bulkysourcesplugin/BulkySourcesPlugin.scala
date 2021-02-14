@@ -24,16 +24,10 @@ object BulkySourcesPlugin extends AutoPlugin {
     inConfig(Test)(baseBulkySourcesSettings)
 
   private lazy val baseBulkySourcesSettings: Seq[Setting[_]] = Seq(
-    bulkySources := Def.inputTaskDyn {
+    bulkySources := {
       val threshold = BulkySources.thresholdTokenParser.parsed
-
-      Def.task { 
-        BulkySources(sources.value, threshold),
-      }
-    }.evaluated
+      BulkySources(sources.value, threshold)
+    },
   )
-
-  override def trigger: PluginTrigger = allRequirements
-  override def requires: Plugins = Plugins.empty
 }
 
