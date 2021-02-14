@@ -3,6 +3,9 @@ package dersimdavaod.scalabootcamp.bulkysourcesplugin
 import sbt._
 import sbt.Keys._
 
+/**
+ * Implements the plugin for sbt.
+ */
 object BulkySourcesPlugin extends AutoPlugin {
   
   object autoImport {
