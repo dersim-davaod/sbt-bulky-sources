@@ -28,8 +28,5 @@ object BulkySources {
    * Parser that reads user arguments and parses threshold value.
    * In case of invalid value, the default threshold is applied.
    */
-  val thresholdTokenParser: Def.Initialize[Parser[Int]] =
-    Def.setting {
-      Space ~> token(NatBasic, "<threshold value>") ?? Defaults.thresholdInLines
-    }
+  val thresholdTokenParser: Parser[Int] = (Space ~> NatBasic) ?? Defaults.thresholdInLines
 } 
