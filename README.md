@@ -1,6 +1,6 @@
 ![plugin version](https://img.shields.io/static/v1?label=version&message=0.1.0-SNAPSHOT&color=brightgreen)
 
-[![Build Status](https://travis-ci.com/dersim-davaod/sbt-bulky-sources-plugin.svg?branch=main)](https://travis-ci.com/dersim-davaod/sbt-bulky-sources-plugin)
+[![Build Status](https://travis-ci.com/dersim-davaod/sbt-bulky-sources.svg?branch=main)](https://travis-ci.com/dersim-davaod/sbt-bulky-sources)
 ![sbt version](https://img.shields.io/static/v1?label=sbt&message=1.4.7&color=brightgreen)
 ![Scala version](https://img.shields.io/static/v1?label=scala&message=2.13.4&color=brightgreen&logo=scala)
 
