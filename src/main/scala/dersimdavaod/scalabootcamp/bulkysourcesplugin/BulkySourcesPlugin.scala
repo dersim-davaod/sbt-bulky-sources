@@ -5,7 +5,7 @@ import sbt.Keys._
 import sbt.complete._
 import sbt.complete.DefaultParsers.{NatBasic, Space, token}
 
-object BulkySources extends AutoPlugin {
+object BulkySourcesPlugin extends AutoPlugin {
   
   object autoImport {
     lazy val bulkyThresholdInLines = settingKey[Int]("threshold to check if the particular source is bulky. The default value is 100.")

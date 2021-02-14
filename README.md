@@ -30,7 +30,7 @@ addSbtPlugin("dersimdavaod.scalabootcamp" % "sbt-bulky-sources" % "0.1.0-SNAPSHO
 
 and enable plugin in the `build.sbt` file:
 ```
-enablePlugins(BulkySources)
+enablePlugins(BulkySourcesPlugin)
 ```
 
 ## Usage sbt-bulky-sources plugin
@@ -46,7 +46,7 @@ where the `threshold` defines how many lines the file should include at least to
 
 ### Examples:
 
-#### Using the default threshold value
+#### Running with the default threshold value
 
 ```
 show bulkySources
@@ -60,7 +60,7 @@ Output:
 [info] * (100, .../src/main/scala/../../../C.scala)
 ```
 
-#### Using the custom threshold value
+#### Running with the custom threshold value
 
 ```
 show bulkySources 300
@@ -72,7 +72,7 @@ Output:
 [info] * (430, .../src/main/scala/../../../A.scala)
 ```
 
-#### Specifying Test configuration
+#### Running on your test sources
 
 ```
 sbt show test:bulkySources 300
