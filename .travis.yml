@@ -1,0 +1,10 @@
+git:
+  depth: 10
+
+notifications:
+  email: false
+
+language: scala
+scala: 2.13.4
+jdk: openjdk15
+os: osx
