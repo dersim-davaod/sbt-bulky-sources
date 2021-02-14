@@ -8,3 +8,4 @@ language: scala
 scala: 2.13.4
 jdk: openjdk15
 os: osx
+script: sbt scripted
