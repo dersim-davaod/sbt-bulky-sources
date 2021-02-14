@@ -17,7 +17,7 @@ Those files that are large or "bulky" are displayed, so the developer can treat 
 To add sbt-bulky-sources functionality to your project add the following to your project/plugins.sbt file:
 
 ```scala
-addSbtPlugin("com.orrsella" % "sbt-bulky-sources" % "0.1.0")
+addSbtPlugin("dersimdavaod.scalabootcamp" % "sbt-bulky-sources" % "0.1.0")
 ```
 
 ## Usage sbt-bulky-sources plugin
