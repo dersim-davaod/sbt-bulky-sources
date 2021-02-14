@@ -3,7 +3,7 @@
 ![Scala version](https://img.shields.io/static/v1?label=scala&message=2.13.4&color=brightgreen&logo=scala)
 ![JDK version](https://img.shields.io/static/v1?label=JDK&message=15.0.2&color=brightgreen&logo=java)
 
-# Bulky sources plugin for SBT
+# Bulky sources plugin for SBT (PUBLIC BETA)
 
 ## Overview
 
@@ -12,14 +12,25 @@ that provides statistics about the size of source files in the sbt console.
 Its purpose is to provide a Bird's-eye view of your project in terms of the size of source files.
 Those files that are large or "bulky" are displayed, so the developer can treat that as a sort of warning.
 
-## Installation
+## Installation (currently PUBLIC BETA or SNAPSHOT version)
 
-First, [install sbt 1.4.6 or higher](https://www.scala-sbt.org/release/docs/Setup.html).
+1. First, [install sbt 1.4.6 or higher](https://www.scala-sbt.org/release/docs/Setup.html).
+1. Clone the current plugin to the local machine.
+1. Navigate into the plugin's root dir and do a local publishing:
 
-To add sbt-bulky-sources functionality to your project add the following to your project/plugins.sbt file:
+```
+sbt publishLocal
+```
+
+1. Then, on the same machine, add the following to your project/plugins.sbt file:
 
 ```scala
-addSbtPlugin("dersimdavaod.scalabootcamp" % "sbt-bulky-sources" % "0.1.0")
+addSbtPlugin("dersimdavaod.scalabootcamp" % "sbt-bulky-sources" % "0.1.0-SNAPSHOT")
+```
+
+and enable plugin in the `build.sbt` file:
+```
+enablePlugins(BulkySources)
 ```
 
 ## Usage sbt-bulky-sources plugin
@@ -28,7 +39,7 @@ The sbt-bulky-sources plugin adds the `bulkySources` task to sbt, and is meant t
 
 To see the list of files that are "large", run the following command from sbt console:
 ```
-sbt show bulkySources [threshold]
+show bulkySources [threshold]
 ```
 
 where the `threshold` defines how many lines the file should include at least to be treated as a "large" or "bulky".
@@ -38,7 +49,7 @@ where the `threshold` defines how many lines the file should include at least to
 #### Using the default threshold value
 
 ```
-sbt show bulkySources
+show bulkySources
 ```
 
 Output:
@@ -47,7 +58,6 @@ Output:
 [info] * (430, .../src/main/scala/../../../A.scala)
 [info] * (130, .../src/main/scala/../../../B.scala)
 [info] * (100, .../src/main/scala/../../../C.scala)
-[info] * (500, .../src/main/scala/../../../D.scala)
 ```
 
 #### Using the custom threshold value
@@ -60,10 +70,9 @@ Output:
 
 ```
 [info] * (430, .../src/main/scala/../../../A.scala)
-[info] * (500, .../src/main/scala/../../../D.scala)
 ```
 
-#### Specifying test target
+#### Specifying Test configuration
 
 ```
 sbt show test:bulkySources 300
@@ -72,7 +81,7 @@ sbt show test:bulkySources 300
 Output:
 
 ```
-[info] * (500, .../src/main/scala/../../../D.scala)
+[info] * (500, .../src/test/scala/../../../A.scala)
 ```
 
 ## Testing
