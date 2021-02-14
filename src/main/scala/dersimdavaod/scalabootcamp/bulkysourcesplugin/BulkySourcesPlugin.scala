@@ -7,6 +7,8 @@ import sbt.Keys._
  * Implements the plugin for sbt.
  */
 object BulkySourcesPlugin extends AutoPlugin {
+  override def trigger: PluginTrigger = allRequirements
+  override def requires: Plugins = Plugins.empty
   
   object autoImport {
     lazy val bulkyThresholdInLines = settingKey[Int]("threshold to check if the particular source is bulky. The default value is 100.")
