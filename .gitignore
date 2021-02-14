@@ -1,0 +1,18 @@
+# Scala
+*.class
+*.log
+
+# IDEs
+.idea/
+.bloop
+.history
+.metals
+.vscode
+.bsp
+metals.sbt
+
+# Build artifacts
+target/
+
+# macOS environment
+.DS_Store
