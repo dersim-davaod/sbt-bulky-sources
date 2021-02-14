@@ -3,9 +3,17 @@
 > show bulkySources 0
 > show bulkySources 1
 > show bulkySources 1000
+> show test:bulkySources
+> show test:bulkySources 0
+> show test:bulkySources 1
+> show test:bulkySources 1000
 
 # checks if bulkySources task fails as expected
 -> show bulkySources -1
 -> show bulkySources -100
 -> show bulkySources abc
 -> show bulkySources 1 2 3
+-> show test:bulkySources -1
+-> show test:bulkySources -100
+-> show test:bulkySources abc
+-> show test:bulkySources 1 2 3
