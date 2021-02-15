@@ -40,10 +40,10 @@ The sbt-bulky-sources plugin adds the `bulkySources` task to `sbt`, and is meant
 
 To analyze your project and see a list of bulky files, run the following command from sbt console:
 ```
-> show bulkySources [threshold]
+> show [test:]bulkySources [threshold]
 ```
 
-where the `threshold` defines how many lines the file should include at least to be treated as a bulky.
+where the `threshold` is an unsigned integer value that defines how many lines the file should include at least to be treated as a bulky.
 
 The default threshold value is 100 lines. The default value is applied if the user's input is not an unsigned integer.
 
